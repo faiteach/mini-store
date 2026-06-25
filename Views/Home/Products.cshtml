@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">منتجاتنا</h1>
+        <p class="text-muted">اختر المنتج الذي يناسبك</p>
+    </div>
+
+    <div class="row g-4">
+
+        @foreach (var pro in ViewBag.FilteredProducts)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-lg h-100">
+
+                    <img src="~/images/@pro.Image"
+                         class="card-img-top p-4"
+                         style="height:250px; object-fit:contain;"
+                         alt="@pro.Name" />
+
+                    <div class="card-body text-center">
+
+                        <h4 class="fw-bold mb-3">
+                            @pro.Name
+                        </h4>
+
+                        <h3 class="text-success fw-bold mb-4">
+                            @pro.Price ريال
+                        </h3>
+
+                        <a asp-action="Details"
+                           asp-route-name="@pro.Name"
+                           class="btn btn-primary btn-lg rounded-pill px-4">
+                            عرض التفاصيل
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>

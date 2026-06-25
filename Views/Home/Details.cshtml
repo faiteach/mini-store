@@ -1,0 +1,39 @@
+@{
+
+}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+            <img  src="~/images/@ViewBag.Product.Image"
+            class="card-img-top mb-3"
+            style="max-hight:300px;
+            object-fit:contain;"
+            alt="@ViewBag.Product.Name"/>
+        <div class="card-body text-center ">
+                <h4 class="mb-3">
+                @ViewBag.Product.Name
+                </h4>
+                <h5 class="text-success mb-3">
+                 @ViewBag.Product.Price ريال
+                </h5>
+                <P class="text-muted">
+                @ViewBag.Product.Description
+                </P>
+            <div class="mt-4 d-flex justify-content-center gap-3">
+              <a asp-action="Products"
+              asp-route-id="@ViewBag.Product.CategoryId"
+              class="btn btn-outline-secondary">
+                 العوده الى المنتجات 
+              </a>
+               <a asp-action="AddToCart"
+              asp-route-name="@ViewBag.Product.Name"
+              class="btn btn-outline-secondary">
+              اضف الى السله 
+              </a>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+</div>

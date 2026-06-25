@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    string[] colors =
+    {
+        "#0d6efd", // primary
+        "#198754", // success
+        "#dc3545", // danger
+        "#ffc107", // warning
+        "#0dcaf0"  // info
+    };
+}
+
+<div class="text-center mb-5 pb-5">
+    <h1 class="display-4 card text-center h-100  mb-5 info ">الاقسام الرئيسيه للمتجر</h1>
+    @* <p>
+        Learn about
+        <a href="https://learn.microsoft.com/aspnet/core">
+            building Web apps with ASP.NET Core
+        </a>
+    </p> *@
+</div>
+<div class="container mb-5">
+<div class="row g-4">
+    @for (int i = 0; i < ViewBag.CategoriesList.Length; i++)
+    {
+        var category = ViewBag.CategoriesList[i];
+       
+
+        <div class="col-md-4">
+            <div class="card text-center h-100 category-card">
+                <div class="card-body">
+
+                    <div class="mb-4">
+                        <i class="fa-solid @category.Icon fs-1"
+                          ></i>
+                    </div>
+
+                    <h4 class="fw-bold mb-4">
+                        @category.Name
+                    </h4>
+
+                    <a asp-action="Products"
+                       asp-route-id="@category.Id"
+                       class="btn btn-info text-white">
+                        عرض المنتجات
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+</div>

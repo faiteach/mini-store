@@ -1,0 +1,19 @@
+@{
+
+}
+<h2 class="mb-4">السلة</h2>
+<h2>عدد المنتجات: @ViewBag.Count</h2>
+@foreach (var item in ViewBag.CartItems)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4>@item.Name</h4>
+            <p>@item.Price ريال</p>
+        </div>
+    </div>
+}
+<hr />
+
+<h3>
+    المجموع الكلي: @ViewBag.Total ريال
+</h3>
