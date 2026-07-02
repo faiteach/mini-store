@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - لوحة التحكم</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
+   <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- ملفات المشروع -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+        body{
+            background:#f8f9fa;
+            overflow-x:hidden;
+        }
+
+        /* القائمة الجانبية */
+        .sidebar{
+            width:250px;
+            height:100vh;
+            position:fixed;
+            top:0;
+            right:0;
+            background:#1e293b;
+        }
+
+        .sidebar .nav-link{
+            color:#cbd5e1;
+            padding:12px 20px;
+            margin:5px 10px;
+            border-radius:8px;
+        }
+
+        .sidebar .nav-link:hover{
+            background:#334155;
+            color:white;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content{
+            margin-right:250px;
+            min-height:100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar">
+        <div class="text-center p-4 border-bottom">
+            <h4 class="text-white">
+                <i class="bi bi-shop"></i>
+                نظام المتجر
+            </h4>
+            <small class="text-secondary">
+                لوحة التحكم 
+            </small>
+        </div>
+
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-house"></i>
+                    الرئيسية
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   asp-controller="Categories"
+                   asp-action="Index">
+                    <i class="bi bi-tags"></i>
+                    الفئات
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   asp-controller="Product"
+                   asp-action="Index">
+                    <i class="bi bi-box-seam"></i>
+                    المنتجات
+                </a>
+            </li>
+
+          
+            <li class="nav-item">
+                <a class="nav-link">
+                    <i class="bi bi-graph-up"></i>
+                    التقارير
+                </a>
+            </li>
+
+            <li class="nav-item mt-3">
+                <a class="nav-link text-danger">
+                    <i class="bi bi-box-arrow-right"></i>
+                    تسجيل الخروج
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content d-flex flex-column">
+
+        <!-- الهيدر -->
+        <header class="bg-white shadow-sm p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                
+                <h4>@ViewData["Title"]</h4>
+
+                <!-- الجزء الأيمن في الهيدر (يحتوي على اللغات والمستخدم) -->
+                <div class="d-flex align-items-center gap-3">
+                    
+                    <!-- قائمة اللغات المنسدلة Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle d-flex align-items-center gap-2" 
+                                type="button" 
+                                id="languageDropdown" 
+                                data-bs-toggle="dropdown" 
+                                aria-expanded="false">
+                            <i class="bi bi-translate text-secondary"></i>
+                            <span>العربية</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end text-end" aria-labelledby="languageDropdown">
+                            <li>
+                                <a class="dropdown-item active" href="#">
+                                    <span class="me-2">🇸🇦</span> العربية
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <span class="me-2">🇺🇸</span> English (الإنجليزية)
+                                </a>
+                            </li>
+                            <li>
+                              
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- فاصل عمودي بسيط لتنسيق المظهر -->
+                    <div class="vr text-muted" style="height: 20px;"></div>
+
+                    <!-- بيانات المستخدم -->
+                    <span class="badge bg-primary p-2 fs-6 fw-normal">
+                        <i class="bi bi-person-circle"></i>
+                     Dev.Fai
+                    </span>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- محتوى الصفحات -->
+        <main class="p-4 flex-grow-1">
+            @RenderBody()
+        </main>
+
+        <!-- الفوتر -->
+        <footer class="bg-white text-center p-3 border-top">
+            <small>
+                © 2026 نظام إدارة المتجر - لأغراض تعليمية
+            </small>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

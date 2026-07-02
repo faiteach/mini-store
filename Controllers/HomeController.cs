@@ -2,11 +2,13 @@ using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc;
 using mini_store.Models;
+using mini_store.Data;
 
 namespace mini_store.Controllers;
 
 public class HomeController : Controller
 {
+   
      private static List<dynamic> _cart= new List<dynamic>();
 
 private static dynamic[] _categories =

@@ -1,0 +1,53 @@
+@model Product
+
+<h2>تعديل بيانات المنتج</h2>
+
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card p-5">
+                <form asp-action="Edit" method="post">
+                 <input type="hidden" asp-for="Id" />
+      <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        الفئة
+                    </label>
+                    <select name="CategoryId" class="form-select">
+
+                        <option value="">اختر الفئة</option>
+
+                        @foreach (var item in ViewBag.categories)
+                        {
+                            <option value="@item.Id">
+
+                                @item.Name
+
+                            </option>
+                        }
+
+                    </select>
+
+                </div>
+    <div class="form-group mb-3">
+        <label asp-for="Name">اسم المنتج</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Price">السعر</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+    
+     <div class="form-group mb-3">
+        <label asp-for="Images">الصورة</label>
+        <input asp-for="Images" class="form-control" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+    <a asp-action="Index" class="btn btn-secondary">إلغاء</a>
+</form>
+            </div>
+        </div>
+    </div>
+  </div>
